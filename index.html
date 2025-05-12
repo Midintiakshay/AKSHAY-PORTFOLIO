@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Akshay Portfolio</title>
+  <title>Midinti Akshay Kumar – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css" />
 </head>
 <body>
   <nav class="navbar">
@@ -16,15 +17,22 @@
     <button onclick="toggleTheme()">🌓</button>
   </nav>
 
+  <header class="hero">
+    <h1 id="typed-name"></h1>
+    <div class="social-icons">
+      <a href="https://github.com/Midintiakshay" target="_blank"><i class="si si-github"></i></a>
+      <a href="https://linkedin.com/in/midintiakshay" target="_blank"><i class="si si-linkedin"></i></a>
+      <a href="mailto:your.email@example.com"><i class="si si-gmail"></i></a>
+    </div>
+  </header>
+
   <div id="root"></div>
 
-  <!-- Load React + Babel -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- Inline React + JSX -->
   <script type="text/babel">
     const { motion } = window['framer-motion'];
     const { useState } = React;
@@ -47,7 +55,7 @@
       return (
         <div className="container">
           <Section id="about" title="About Me">
-            <p>Hi, I'm <strong>Akshay Kumar Midinti</strong> — passionate about Data Science & Computer Science.</p>
+            <p>Hi, I'm <strong>Midinti Akshay Kumar</strong> — a passionate Data Science and Computer Science professional.</p>
             <a href="resume.pdf" download className="resume-btn">Download My Resume</a>
           </Section>
 
@@ -62,13 +70,15 @@
           <Section id="projects" title="Projects">
             <div className="projects">
               <div className="card">
+                <img src="https://via.placeholder.com/400x200?text=Gesture+Interpreter" alt="Gesture Interpreter" />
                 <h3>Gesture Interpreter</h3>
-                <p>Sign language translator using OpenCV + Python.</p>
+                <p>Real-time sign language translator using OpenCV + Python.</p>
                 <a href="#">GitHub Repo</a>
               </div>
               <div className="card">
+                <img src="https://via.placeholder.com/400x200?text=Image+Classifier" alt="Image Classifier" />
                 <h3>Image Classifier</h3>
-                <p>Real-time image classification using MobileNetV2 + Streamlit.</p>
+                <p>MobileNetV2 + Streamlit UI for real-time image classification.</p>
                 <a href="#">Live Demo</a>
               </div>
             </div>
@@ -90,11 +100,21 @@
     root.render(<App />);
   </script>
 
-  <!-- Theme Toggle -->
   <script>
     function toggleTheme() {
       document.body.classList.toggle("dark");
     }
+
+    const name = "Midinti Akshay Kumar";
+    let i = 0;
+    function typeWriter() {
+      if (i < name.length) {
+        document.getElementById("typed-name").innerHTML += name.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    window.onload = typeWriter;
   </script>
 </body>
 </html>
