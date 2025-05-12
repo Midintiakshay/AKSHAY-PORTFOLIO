@@ -2,114 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Midinti Akshay Kumar – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midinti Akshay Kumar – Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="resume.pdf" download class="resume-btn">Resume</a>
-    <button onclick="toggleTheme()">🌓</button>
-  </nav>
+  <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">
+    Toggle Theme
+  </button>
 
-  <header class="hero">
-    <h1 id="typed-name"></h1>
-    <div class="social-icons">
-      <a href="https://github.com/Midintiakshay" target="_blank"><i class="si si-github"></i></a>
-      <a href="https://linkedin.com/in/midintiakshay" target="_blank"><i class="si si-linkedin"></i></a>
-      <a href="mailto:your.email@example.com"><i class="si si-gmail"></i></a>
+  <div class="card">
+    <img src="profile.jpg" alt="Profile Picture" class="profile-img" />
+    <h1 id="typing-name"></h1>
+    <a class="resume-btn" href="resume.pdf" download>📄 Download Resume</a>
+    <p class="subtitle">Data Science & Computer Science Professional</p>
+
+    <div class="contact">
+      <p><i class="fas fa-envelope"></i> midintiakshaykumar@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +918919883303</p>
+      <p><i class="fas fa-map-marker-alt"></i> Thogarpally, Kondapur, Sangareddy, Telangana, 502306</p>
     </div>
-  </header>
 
-  <div id="root"></div>
+    <div class="social">
+      <a href="https://github.com/Midintiakshay" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/midinti-akshay-kumar-1363502bb" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
 
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/><span>Python</span></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/><span>Java</span></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/><span>HTML</span></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"/><span>CSS</span></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/><span>SQL</span></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"/><span>TensorFlow</span></div>
+    </div>
+  </div>
 
-  <script type="text/babel">
-    const { motion } = window['framer-motion'];
-    const { useState } = React;
+  <div class="section">
+    <h2>Projects</h2>
+    <details>
+      <summary><strong>Gesture Interpreter (2024)</strong></summary>
+      <p>Real-time sign language translator using OpenCV + Python. Tested by 100+ users.</p>
+    </details>
+    <details>
+      <summary><strong>Image Classifier App (2025)</strong></summary>
+      <p>MobileNetV2 + Streamlit. Achieved 92% accuracy on CIFAR-10 dataset.</p>
+    </details>
+  </div>
 
-    function Section({ id, title, children }) {
-      return (
-        <motion.section id={id} className="block"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2>{title}</h2>
-          {children}
-        </motion.section>
-      );
-    }
+  <div class="section">
+    <h2>Education</h2>
+    <ul>
+      <li>B.Tech, CSE & DS – MLR Institute of Technology (2020–2024)</li>
+      <li>Diploma, Mechanical Engg – Sri Sangameshwara Govt. Polytechnic (2017–2020)</li>
+      <li>SSC – Zilla Parishad High School (2016–2017)</li>
+    </ul>
+  </div>
 
-    function App() {
-      return (
-        <div className="container">
-          <Section id="about" title="About Me">
-            <p>Hi, I'm <strong>Midinti Akshay Kumar</strong> — a passionate Data Science and Computer Science professional.</p>
-            <a href="resume.pdf" download className="resume-btn">Download My Resume</a>
-          </Section>
-
-          <Section id="skills" title="Skills">
-            <ul>
-              <li><strong>Programming:</strong> Python, Java, HTML, CSS, SQL</li>
-              <li><strong>Data Science:</strong> Machine Learning, Data Analysis</li>
-              <li><strong>Tools:</strong> TensorFlow, Streamlit</li>
-            </ul>
-          </Section>
-
-          <Section id="projects" title="Projects">
-            <div className="projects">
-              <div className="card">
-                <img src="https://via.placeholder.com/400x200?text=Gesture+Interpreter" alt="Gesture Interpreter" />
-                <h3>Gesture Interpreter</h3>
-                <p>Real-time sign language translator using OpenCV + Python.</p>
-                <a href="#">GitHub Repo</a>
-              </div>
-              <div className="card">
-                <img src="https://via.placeholder.com/400x200?text=Image+Classifier" alt="Image Classifier" />
-                <h3>Image Classifier</h3>
-                <p>MobileNetV2 + Streamlit UI for real-time image classification.</p>
-                <a href="#">Live Demo</a>
-              </div>
-            </div>
-          </Section>
-
-          <Section id="contact" title="Contact Me">
-            <form name="contact" method="POST" data-netlify="true">
-              <input type="text" name="name" placeholder="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" required />
-              <textarea name="message" placeholder="Your Message" required></textarea>
-              <button type="submit">Send</button>
-            </form>
-          </Section>
-        </div>
-      );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<App />);
-  </script>
+  <div class="section">
+    <h2>Certifications</h2>
+    <ul>
+      <li>Career Essentials in Data Analysis – Microsoft & LinkedIn</li>
+      <li>Python for Data Science – IBM</li>
+      <li>Big Data Analytics – Great Learning</li>
+      <li>SQL (Basic) – HackerRank</li>
+    </ul>
+  </div>
 
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-    }
-
-    const name = "Midinti Akshay Kumar";
+    const nameText = "Midinti Akshay Kumar";
     let i = 0;
     function typeWriter() {
-      if (i < name.length) {
-        document.getElementById("typed-name").innerHTML += name.charAt(i);
+      if (i < nameText.length) {
+        document.getElementById("typing-name").innerHTML += nameText.charAt(i);
         i++;
         setTimeout(typeWriter, 100);
       }
