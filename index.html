@@ -18,14 +18,79 @@
 
   <div id="root"></div>
 
-  <!-- React & Babel -->
+  <!-- Load React + Babel -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <script type="text/babel" src="App.js"></script>
+  <!-- Inline React + JSX -->
+  <script type="text/babel">
+    const { motion } = window['framer-motion'];
+    const { useState } = React;
 
+    function Section({ id, title, children }) {
+      return (
+        <motion.section id={id} className="block"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2>{title}</h2>
+          {children}
+        </motion.section>
+      );
+    }
+
+    function App() {
+      return (
+        <div className="container">
+          <Section id="about" title="About Me">
+            <p>Hi, I'm <strong>Akshay Kumar Midinti</strong> — passionate about Data Science & Computer Science.</p>
+            <a href="resume.pdf" download className="resume-btn">Download My Resume</a>
+          </Section>
+
+          <Section id="skills" title="Skills">
+            <ul>
+              <li><strong>Programming:</strong> Python, Java, HTML, CSS, SQL</li>
+              <li><strong>Data Science:</strong> Machine Learning, Data Analysis</li>
+              <li><strong>Tools:</strong> TensorFlow, Streamlit</li>
+            </ul>
+          </Section>
+
+          <Section id="projects" title="Projects">
+            <div className="projects">
+              <div className="card">
+                <h3>Gesture Interpreter</h3>
+                <p>Sign language translator using OpenCV + Python.</p>
+                <a href="#">GitHub Repo</a>
+              </div>
+              <div className="card">
+                <h3>Image Classifier</h3>
+                <p>Real-time image classification using MobileNetV2 + Streamlit.</p>
+                <a href="#">Live Demo</a>
+              </div>
+            </div>
+          </Section>
+
+          <Section id="contact" title="Contact Me">
+            <form name="contact" method="POST" data-netlify="true">
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" required></textarea>
+              <button type="submit">Send</button>
+            </form>
+          </Section>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+
+  <!-- Theme Toggle -->
   <script>
     function toggleTheme() {
       document.body.classList.toggle("dark");
