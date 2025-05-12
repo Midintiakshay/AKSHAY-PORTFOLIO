@@ -2,94 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Midinti Akshay Kumar – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="background-anim"></div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certs">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <header class="hero">
-    <img src="profile.jpg" alt="Profile" class="profile-img" />
-    <h1 class="glow">Midinti Akshay Kumar</h1>
-    <p class="tagline">Turning data into direction. Designing code into clarity.</p>
-    <a href="resume.pdf" class="resume-btn" download>📄 Download Resume</a>
-  </header>
+  <section class="hero" id="home">
+    <img src="profile.jpg" alt="Profile Picture" class="profile-photo" />
+    <h1 class="name">Midinti Akshay Kumar</h1>
+    <p class="title">Data Science & Computer Science Professional</p>
+    <p class="bio">
+      Motivated and driven professional with a strong foundation in computer science and data science. Committed to utilizing analytical skills for meaningful outcomes, aligning with organizational visions and fostering innovative solutions in dynamic environments. Enthusiastic about continuous learning and professional growth.
+    </p>
+    <a href="resume.pdf" class="resume-button" download>📄 Download Resume</a>
+  </section>
 
-  <section class="section">
+  <section class="section" id="skills">
     <h2>Skills</h2>
-    <p class="quote">"A toolbox is only as sharp as its craftsman."</p>
     <div class="skills-grid">
-      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><span>Python</span></div>
-      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><span>Java</span></div>
-      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><span>HTML</span></div>
-      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><span>CSS</span></div>
-      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><span>SQL</span></div>
-      <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"><span>TensorFlow</span></div>
+      <!-- Programming -->
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><span>Python</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><span>Java</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><span>HTML</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><span>CSS</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><span>SQL</span></div>
+
+      <!-- Data Science -->
+      <div class="skill purple"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"><span>TensorFlow</span></div>
+      <div class="skill purple"><i class="fas fa-brain"></i><span>Machine Learning</span></div>
+      <div class="skill purple"><i class="fas fa-database"></i><span>Big Data</span></div>
+      <div class="skill purple"><i class="fas fa-chart-line"></i><span>Data Analysis</span></div>
+
+      <!-- Tools -->
+      <div class="skill teal"><i class="fas fa-stream"></i><span>Streamlit</span></div>
+      <div class="skill teal"><i class="fas fa-table"></i><span>Excel</span></div>
+
+      <!-- Soft Skills -->
+      <div class="skill amber"><i class="fas fa-puzzle-piece"></i><span>Problem Solving</span></div>
+      <div class="skill amber"><i class="fas fa-lightbulb"></i><span>Critical Thinking</span></div>
+      <div class="skill amber"><i class="fas fa-sync-alt"></i><span>Adaptability</span></div>
+      <div class="skill amber"><i class="fas fa-comments"></i><span>Communication</span></div>
     </div>
   </section>
 
-  <section class="section alt">
-    <h2>Education</h2>
-    <p class="quote">"Every degree is a doorway to possibility."</p>
-    <div class="timeline">
-      <div class="edu-card">
-        <h3>B.Tech – Computer Science & Data Science</h3>
-        <p>MLR Institute of Technology | 2023–2026</p>
-        <p>Explored the convergence of algorithms, ethics, and emerging tech in shaping intelligent systems.</p>
-      </div>
-      <div class="edu-card">
-        <h3>Diploma – Mechanical Engineering</h3>
-        <p>Sri Sangameshwara Govt. Polytechnic | 2020–2023</p>
-        <p>Built foundational design thinking and mechanical problem-solving — mind meets machine.</p>
-      </div>
-      <div class="edu-card">
-        <h3>SSC – High School</h3>
-        <p>Zilla Parishad High School | 2019–2020</p>
-        <p>The roots of curiosity and determination were first nurtured here.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
+  <section class="section" id="projects">
     <h2>Projects</h2>
-    <p class="quote">"Where problems meet purpose, projects are born."</p>
     <div class="project">
       <h3>🧠 Gesture Interpreter (2024)</h3>
-      <p>A computer vision tool that translates sign language into text using Python + OpenCV. Hardware-free and real-time, this app empowered over 100 users to break communication barriers.</p>
-      <p><strong>Key Stack:</strong> OpenCV, Python, Streamlit</p>
+      <p>Real-time sign language interpreter using OpenCV + Python. Hardware-free solution that improved communication for 100+ users.</p>
     </div>
     <div class="project">
       <h3>🔍 Image Classifier (2025)</h3>
-      <p>A lightweight classifier built on MobileNetV2 for CIFAR-10 dataset. Accessible via Streamlit UI and deployable to low-resource devices. Achieved 92% test accuracy.</p>
-      <p><strong>Key Stack:</strong> TensorFlow, Streamlit, Python</p>
+      <p>Streamlit-based image classifier using MobileNetV2. Deployed on low-resource environments, achieved 92% accuracy.</p>
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section" id="education">
+    <h2>Education</h2>
+    <div class="edu-card">
+      <h3>B.Tech – Computer Science & Data Science</h3>
+      <p>MLR Institute of Technology | 2023–2026</p>
+    </div>
+    <div class="edu-card">
+      <h3>Diploma – Mechanical Engineering</h3>
+      <p>Sri Sangameshwara Polytechnic | 2020–2023</p>
+    </div>
+    <div class="edu-card">
+      <h3>SSC – High School</h3>
+      <p>Zilla Parishad High School | 2019–2020</p>
+    </div>
+  </section>
+
+  <section class="section" id="certs">
     <h2>Certifications</h2>
-    <p class="quote">"Every badge a milestone in a lifelong journey."</p>
-    <ul class="certs">
-      <li>📊 Career Essentials in Data Analysis – Microsoft & LinkedIn</li>
-      <li>📈 Big Data Analytics – Great Learning</li>
-      <li>🔍 Data Analytics Essentials – Cisco</li>
-      <li>🐍 Python for Data Science – IBM</li>
-      <li>🤖 Introduction to Machine Learning – NPTEL</li>
-      <li>☕ Java Basics – Coding Ninjas</li>
-      <li>☕ Core Java – Infosys Springboard</li>
-      <li>🗃️ SQL (Basic) – HackerRank</li>
+    <ul class="cert-list">
+      <li>Career Essentials in Data Analysis – Microsoft & LinkedIn</li>
+      <li>Python for Data Science – IBM</li>
+      <li>Big Data Analytics – Great Learning</li>
+      <li>SQL (Basic) – HackerRank</li>
     </ul>
   </section>
 
-  <footer class="contact">
-    <p><i class="fas fa-envelope"></i> midintiakshaykumar@gmail.com</p>
-    <p><i class="fas fa-phone"></i> +91 9573936426</p>
-    <p><i class="fas fa-map-marker-alt"></i> Telangana, India</p>
-    <div>
-      <a href="https://github.com/Midintiakshay" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/midinti-akshay-kumar-1363502bb" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <footer class="section" id="contact">
+    <h2>Contact</h2>
+    <p>Email: midintiakshaykumar@gmail.com</p>
+    <p>Phone: +918919883303</p>
+    <p>Location: Telangana, India</p>
+    <div class="social">
+      <a href="https://github.com/Midintiakshay" target="_blank">GitHub</a> |
+      <a href="https://www.linkedin.com/in/midinti-akshay-kumar-1363502bb" target="_blank">LinkedIn</a>
     </div>
   </footer>
 </body>
