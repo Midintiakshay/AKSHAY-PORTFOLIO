@@ -4,8 +4,8 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #f5edbf;
-  color: #eee;
+  background:#DDD0C8 ;
+  color: #323232;
 }
 
 .navbar {
