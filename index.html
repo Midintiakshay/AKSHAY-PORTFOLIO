@@ -9,39 +9,121 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  <!-- Navigation -->
   <nav class="navbar">
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certs">Certifications</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero" id="home">
-    <img src="profile.jpg" alt="Profile Picture" class="profile-photo" height=100 width=100 />
+    <img src="profile.jpg" alt="Akshay Kumar Photo" class="profile-photo" />
     <h1 class="name">Midinti Akshay Kumar</h1>
     <p class="title">Data Science & Computer Science Professional</p>
-    <p class="bio">
-      Motivated and driven professional with a strong foundation in computer science and data science. Committed to utilizing analytical skills for meaningful outcomes, aligning with organizational visions and fostering innovative solutions in dynamic environments. Enthusiastic about continuous learning and professional growth.
+    <p>
+      Motivated computer science and data science graduate skilled in data analysis
+      and machine learning. Passionate about solving real-world problems through scalable and impactful solutions.
     </p>
     <a href="resume.pdf" class="resume-button" download>📄 Download Resume</a>
   </section>
 
+
+
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <h2>Education</h2>
+    <div class="edu-card slide-left" data-delay="0s">
+      <h3>B.Tech – Computer Science & Data Science</h3>
+      <p>MLR Institute of Technology | 2023–2026</p>
+    </div>
+    <div class="edu-card slide-right" data-delay="0.2s">
+      <h3>Diploma – Mechanical Engineering</h3>
+      <p>Sri Sangameshwara Polytechnic | 2020–2023</p>
+    </div>
+    <div class="edu-card zoom-in" data-delay="0.4s">
+      <h3>SSC – High School</h3>
+      <p>Zilla Parishad High School | 2019–2020</p>
+    </div>
+  </section>
+
+<section class="section" id="experience">
+  <h2>Experience</h2>
+  <div class="project bounce" data-delay="0s">
+    <h3>💼 Deloitte Australia – Data Analytics Virtual Internship (2025)</h3>
+    <ul>
+      <li>Simulated a real-world forensic audit investigation using datasets with thousands of financial records.</li>
+      <li>Built insightful Tableau dashboards to visualize transaction anomalies, employee activity spikes, and vendor outliers.</li>
+      <li>Utilized Excel for VLOOKUP-based data classification and pivot tables for grouping suspicious transactions.</li>
+      <li>Demonstrated understanding of professional consulting workflows and data-driven decision making.</li>
+    </ul>
+    <a class="link-button" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/..." target="_blank">View Certificate</a>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <h2>Projects</h2>
+
+  <div class="project fade-in" data-delay="0s">
+    <h3>✋ Gesture Interpreter</h3>
+    <ul>
+      <li>Developed a real-time gesture recognition system using Mediapipe and OpenCV to interpret hand signs (A-Z).</li>
+      <li>Used landmark normalization and a trained ML model for accurate classification, achieving near real-time inference.</li>
+      <li>Built a frontend using React and deployed the backend via FastAPI; supports webcam live gesture tracking.</li>
+      <li>Potentially useful for accessible communication tools (e.g., for hearing-impaired users).</li>
+    </ul>
+    <a class="link-button" href="https://github.com/Midintiakshay/Gesture-Interpreter-main.git" target="_blank">GitHub Repo</a>
+  </div>
+
+  <div class="project zoom-in" data-delay="0.2s">
+    <h3>🖼️ Image Classification</h3>
+    <ul>
+      <li>Built an image classification web app using TensorFlow and MobileNetV2 trained on CIFAR-10.</li>
+      <li>Achieved 92% test accuracy using transfer learning techniques; reduced training time by 70%.</li>
+      <li>Created a user-friendly UI using Streamlit to drag-and-drop images and display predicted labels in real time.</li>
+      <li>Hosted publicly on Streamlit Cloud; demonstrated model deployment and inferencing in a production setting.</li>
+    </ul>
+    <a class="link-button" href="https://github.com/Midintiakshay/Image-Classification.git" target="_blank">GitHub</a>
+    <a class="link-button" href="https://image-classification-m.streamlit.app/" target="_blank">Live Demo</a>
+  </div>
+
+  <div class="project slide-left" data-delay="0.4s">
+    <h3>🌐 Portfolio Website</h3>
+    <ul>
+      <li>Created a fully responsive personal portfolio using HTML5 and CSS3 with dark/light mode support.</li>
+      <li>Used smooth scrolling, scroll-reveal animations, and modern badges to make each section interactive and polished.</li>
+      <li>Included contact links, certification links, GitHub/LinkedIn integrations, and a downloadable resume option.</li>
+      <li>Deployed seamlessly on Netlify with performance-optimized images and scripts.</li>
+    </ul>
+    <a class="link-button" href="https://midintiakshaykumar.netlify.app/" target="_blank">Live Site</a>
+    <a class="link-button" href="https://github.com/Midintiakshay/AKSHAY-PORTFOLIO.git" target="_blank">GitHub</a>
+  </div>
+</section>
+
+
+  <!-- Skills -->
   <section class="section" id="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
-      <!-- Programming -->
-      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><span>Python</span></div>
-      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><span>Java</span></div>
-      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><span>HTML</span></div>
-      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><span>CSS</span></div>
-      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><span>SQL</span></div>
+      <!-- Programming Skills -->
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><span>Java</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><span>HTML</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"><span>CSS</span></div>
+      <div class="skill blue"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"><span>MySQL</span></div>
+      <div class="skill blue"><i class="fab fa-git-alt"></i><span>Git</span></div>
+      <div class="skill blue"><i class="fab fa-github"></i><div>GitHub</div>
+</div>
 
-      <!-- Data Science -->
-      <div class="skill purple"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"><span>TensorFlow</span></div>
+
+      <!-- Data Science Libraries -->
+      <div class="skill purple"><span>NumPy</span></div>
+      <div class="skill purple"><span>Pandas</span></div>
+      <div class="skill purple"><span>Matplotlib</span></div>
       <div class="skill purple"><i class="fas fa-brain"></i><span>Machine Learning</span></div>
       <div class="skill purple"><i class="fas fa-database"></i><span>Big Data</span></div>
       <div class="skill purple"><i class="fas fa-chart-line"></i><span>Data Analysis</span></div>
@@ -49,6 +131,8 @@
       <!-- Tools -->
       <div class="skill teal"><i class="fas fa-stream"></i><span>Streamlit</span></div>
       <div class="skill teal"><i class="fas fa-table"></i><span>Excel</span></div>
+      <div class="skill teal"><i class="fas fa-code"></i><span>VS Code</span></div>
+      <div class="skill teal"><i class="fas fa-book"></i><span>Jupyter Notebook</span></div>
 
       <!-- Soft Skills -->
       <div class="skill amber"><i class="fas fa-puzzle-piece"></i><span>Problem Solving</span></div>
@@ -58,53 +142,102 @@
     </div>
   </section>
 
-  <section class="section" id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>🧠 Gesture Interpreter (2024)</h3>
-      <p>Real-time sign language interpreter using OpenCV + Python. Hardware-free solution that improved communication for 100+ users.</p>
-    </div>
-    <div class="project">
-      <h3>🔍 Image Classifier (2025)</h3>
-      <p>Streamlit-based image classifier using MobileNetV2. Deployed on low-resource environments, achieved 92% accuracy.</p>
-    </div>
-  </section>
+<section class="section" id="certs">
+  <h2>Certifications</h2>
 
-  <section class="section" id="education">
-    <h2>Education</h2>
-    <div class="edu-card">
-      <h3>B.Tech – Computer Science & Data Science</h3>
-      <p>MLR Institute of Technology | 2023–2026</p>
-    </div>
-    <div class="edu-card">
-      <h3>Diploma – Mechanical Engineering</h3>
-      <p>Sri Sangameshwara Polytechnic | 2020–2023</p>
-    </div>
-    <div class="edu-card">
-      <h3>SSC – High School</h3>
-      <p>Zilla Parishad High School | 2019–2020</p>
-    </div>
-  </section>
+  <div class="project fade-in" data-delay="0s">
+    <h3>📊 Career Essentials in Data Analysis</h3>
+    <p><strong>Microsoft & LinkedIn Learning</strong></p>
+    <ul><li>Excel, Power BI, SQL – Real-world data analysis workflows.</li></ul>
+    <a class="link-button" href="https://www.linkedin.com/learning/certificates/57711424dff0f9c57ff70923a9ac5693b38643450e28f02a9b5f3617515e7cda?trk=share_certificate" target="_blank">View Certificate</a>
+  </div>
 
-  <section class="section" id="certs">
-    <h2>Certifications</h2>
-    <ul class="cert-list">
-      <li>Career Essentials in Data Analysis – Microsoft & LinkedIn</li>
-      <li>Python for Data Science – IBM</li>
-      <li>Big Data Analytics – Great Learning</li>
-      <li>SQL (Basic) – HackerRank</li>
-    </ul>
-  </section>
+  <div class="project zoom-in" data-delay="0.2s">
+    <h3>🐍 Python for Data Science</h3>
+    <p><strong>IBM</strong></p>
+    <ul><li>Hands-on with Pandas, NumPy, and Matplotlib.</li></ul>
+    <a class="link-button" href="https://www.credly.com/badges/..." target="_blank">View Certificate</a>
+  </div>
 
+  <div class="project slide-left" data-delay="0.3s">
+    <h3>🧠 Introduction to Machine Learning</h3>
+    <p><strong>NPTEL</strong></p>
+    <ul><li>Regression, SVM, PCA, and clustering models.</li></ul>
+    <a class="link-button" href="https://archive.nptel.ac.in/content/..." target="_blank">View Certificate</a>
+  </div>
+
+  <div class="project fade-in" data-delay="0.4s">
+    <h3>🧠 Developing AI Applications with Python and Flask</h3>
+    <p><strong>Coursera</strong></p>
+    <ul><li>Built intelligent web apps integrating Flask and ML models.</li></ul>
+    <a class="link-button" href="https://www.coursera.org/account/accomplishments/verify/EYF1X385SX8S" target="_blank">View Certificate</a>
+  </div>
+
+  <div class="project zoom-in" data-delay="0.5s">
+    <h3>📈 SQL (Intermediate)</h3>
+    <p><strong>HackerRank</strong></p>
+    <ul><li>Mastered joins, subqueries, aggregation, and window functions.</li></ul>
+    <a class="link-button" href="https://www.hackerrank.com/certificates/8bba62b65f1d" target="_blank">View Certificate</a>
+  </div>
+
+  <div class="project slide-left" data-delay="0.6s">
+    <h3>📊 Big Data Analytics</h3>
+    <p><strong>Great Learning</strong></p>
+    <ul><li>Explored Hadoop, data lakes, and distributed data processing.</li></ul>
+    <a class="link-button" href="https://www.mygreatlearning.com/certificate/NPFMBZKA" target="_blank">View Certificate</a>
+  </div>
+
+  <div class="project fade-in" data-delay="0.7s">
+    <h3>✉️ Writing Professional Emails in English</h3>
+    <p><strong>Coursera</strong></p>
+    <ul><li>Developed effective and formal business communication skills.</li></ul>
+    <a class="link-button" href="https://coursera.org/share/930812a59585602c0b066b6d67f76c21" target="_blank">View Certificate</a>
+  </div>
+
+  <div class="project zoom-in" data-delay="0.8s">
+    <h3>📊 Data Analytics Essentials</h3>
+    <p><strong>Credly</strong></p>
+    <ul><li>Foundational principles of exploratory data analysis, KPIs, and insights extraction.</li></ul>
+    <a class="link-button" href="https://www.credly.com/badges/671d60be-22d8-47e6-89b2-4a2cb2f27efe/linked_in_profile" target="_blank">View Certificate</a>
+  </div>
+</section>
+
+  <!-- Contact -->
   <footer class="section" id="contact">
     <h2>Contact</h2>
-    <p>Email: midintiakshaykumar@gmail.com</p>
-    <p>Phone: +918919883303</p>
-    <p>Location: Telangana, India</p>
+    <p>📍 <a href="https://www.google.com/maps/search/Thogarpally,+Sangareddy,+Telangana" target="_blank">Thogarpally, Sangareddy, Telangana</a></p>
+    
+    <p>📧 <a href="mailto:akshaykumarmidinti@gmail.com">akshaykumarmidinti@gmail.com</a></p>
+    <p>📞 <a href="tel:+918919883303">+91 89198 83303</a></p>
     <div class="social">
-      <a href="https://github.com/Midintiakshay" target="_blank">GitHub</a> |
-      <a href="https://www.linkedin.com/in/midinti-akshay-kumar-1363502bb" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Midintiakshay" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+      <a href="https://www.linkedin.com/in/midinti-akshay-kumar-1363502bb" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </div>
   </footer>
+
+<!-- Scroll Animations with Staggered Delay -->
+<script>
+  const animatedElements = document.querySelectorAll(
+    '.edu-card, .project, .fade-in, .zoom-in, .slide-left, .slide-right, .bounce, .skill, .hero'
+  );
+
+  function revealOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    animatedElements.forEach((el, index) => {
+      const rect = el.getBoundingClientRect();
+      const delay = el.getAttribute('data-delay');
+      if (rect.top < triggerBottom && !el.classList.contains('visible')) {
+        el.style.transitionDelay = delay;
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+
 </body>
 </html>
