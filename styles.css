@@ -7,7 +7,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background:#74a3db;
+  background:#77a0d4;
   color: #eee;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 .name {
   font-size: 2.4rem;
-  color:#0000;
+  color:black;
   margin-top: 1rem;
 }
 .title {
