@@ -236,22 +236,25 @@
 
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
-
-  // Interactive Background effect
-const bg = document.getElementById("liveBg");
+  
+ 
+  //Background Live
+    
+  <div id="liveBg" class="live-bg"></div>
+  
+  const bg = document.getElementById("liveBg");
 
 function updateBackground(x, y) {
   const hue1 = (x / window.innerWidth) * 360;
   const hue2 = (y / window.innerHeight) * 360;
-  const hue3 = ((x + y) / (window.innerWidth + window.innerHeight)) * 360;
 
   bg.style.background = `radial-gradient(circle at ${x}px ${y}px,
     hsl(${hue1}, 80%, 60%),
     hsl(${hue2}, 80%, 50%),
-    hsl(${hue3}, 80%, 40%))`;
+    hsl(${(hue1 + hue2) / 2}, 80%, 40%))`;
 }
 
-// Mouse move
+// Mouse move (desktop)
 document.addEventListener("mousemove", (e) => {
   updateBackground(e.clientX, e.clientY);
 });
@@ -262,20 +265,7 @@ document.addEventListener("touchmove", (e) => {
   updateBackground(touch.clientX, touch.clientY);
 }, { passive: true });
 
-</script>
-
-  <!-- Interactive Background -->
-  <div class="live-bg" id="liveBg"></div>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  
   
 </body>
 </html>
