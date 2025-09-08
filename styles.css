@@ -187,64 +187,12 @@ a:hover {
   transform: translateY(0);
 }
 
-/* Background stays full screen */
-.live-bg {
+#bgCanvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
-  pointer-events: none;
   z-index: -1;
-}
-
-/* Wrapper: no blur, just transparent */
-.content-wrapper {
-  position: relative;
-  z-index: 1;
-  background: transparent;
-  margin: 0 auto;
-  padding: 20px;
-  max-width: 1400px;
-  color: #e0e0e0;
-}
-
-/* Neon headings */
-h1, h2, h3, .name, .title {
-  color: #fff;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7),
-               0 0 20px rgba(0, 255, 255, 0.5);
-}
-
-/* Futuristic cards */
-.edu-card, .project, .skill {
-  background: rgba(15, 15, 25, 0.85);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 15px 0;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.edu-card:hover, .project:hover, .skill:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6),
-              0 0 50px rgba(0, 255, 255, 0.3);
-}
-
-/* Neon accent links/buttons */
-a, .link-button, .resume-button {
-  color: #00ffff;
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  background: rgba(0, 255, 255, 0.05);
-  padding: 8px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-a:hover, .link-button:hover, .resume-button:hover {
-  background: rgba(0, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  background: #000;
 }
