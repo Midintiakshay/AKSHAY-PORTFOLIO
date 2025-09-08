@@ -187,3 +187,12 @@ a:hover {
   transform: translateY(0);
 }
 
+/* Interactive Background */
+.live-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at center, #03dac5, #bb86fc, #181818);
+  z-index: -1;  /* stay behind everything */
+  transition: background 0.2s ease;
+}
