@@ -11,7 +11,10 @@
 <body>
 
   <div id="liveBg" class="live-bg"></div>
-  <!-- Navigation -->
+  
+  <div class="content-wrapper">
+    
+    <!-- Navigation -->
   <nav class="navbar">
     <ul>
       <li><a href="#experience">Experience</a></li>
@@ -266,6 +269,20 @@ document.addEventListener("touchmove", (e) => {
   updateBackground(touch.clientX, touch.clientY);
 }, { passive: true });
 
+
+  const liveBg = document.getElementById("liveBg");
+
+  document.addEventListener("mousemove", (e) => {
+  
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    const hue = 200 + x * 160; // purples & blues
+    const sat = 70 + y * 20;
+    liveBg.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, 
+    hsl(${hue}, ${sat}%, 50%),
+    hsl(${hue+40}, ${sat-10}%, 20%), 
+    #0a0a1f)`;
+  });
 </script> 
   
   
