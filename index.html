@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <div id="liveBg" class="live-bg"></div>
+<canvas id="bgCanvas"></canvas>
   
   <div class="content-wrapper">
     
@@ -241,49 +241,62 @@
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
   
- 
   
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+
+  window.addEventListener("resize", () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+});
+
+let mouseX = width / 2;
+let mouseY = height / 2;
+let hue = 200; // starting color
+
+// Track mouse
+document.addEventListener("mousemove", e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Track finger (touch)
+document.addEventListener("touchmove", e => {
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+});
+
+// Animate glowing blob
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  // smooth color cycling
+  hue = (hue + 1) % 360;
+
+  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 250);
+  gradient.addColorStop(0, `hsla(${hue}, 100%, 70%, 1)`);
+  gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
     
   
   
-  const bg = document.getElementById("liveBg");
-
-function updateBackground(x, y) {
-  const hue1 = (x / window.innerWidth) * 360;
-  const hue2 = (y / window.innerHeight) * 360;
-
-  bg.style.background = `radial-gradient(circle at ${x}px ${y}px,
-    hsl(${hue1}, 80%, 60%),
-    hsl(${hue2}, 80%, 50%),
-    hsl(${(hue1 + hue2) / 2}, 80%, 40%))`;
-}
-
-// Mouse move (desktop)
-document.addEventListener("mousemove", (e) => {
-  updateBackground(e.clientX, e.clientY);
-});
-
-// Touch move (mobile)
-document.addEventListener("touchmove", (e) => {
-  const touch = e.touches[0];
-  updateBackground(touch.clientX, touch.clientY);
-}, { passive: true });
-
-
-  const liveBg = document.getElementById("liveBg");
-
-  document.addEventListener("mousemove", (e) => {
   
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
-    const hue = 200 + x * 160; // purples & blues
-    const sat = 70 + y * 20;
-    liveBg.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, 
-    hsl(${hue}, ${sat}%, 50%),
-    hsl(${hue+40}, ${sat-10}%, 20%), 
-    #0a0a1f)`;
-  });
-</script> 
   
   
  
