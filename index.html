@@ -10,83 +10,8 @@
 </head>
 <body>
 
- <canvas id="bgCanvas"></canvas>
-
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    background: black;
-  }
-  #bgCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: #000;
-  }
-</style>
-
-<script>
-const canvas = document.getElementById("bgCanvas");
-const ctx = canvas.getContext("2d");
-
-let width = window.innerWidth;
-let height = window.innerHeight;
-canvas.width = width;
-canvas.height = height;
-
-window.addEventListener("resize", () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
-});
-
-let mouseX = width / 2;
-let mouseY = height / 2;
-
-// track mouse
-document.addEventListener("mousemove", e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-// track touch
-document.addEventListener("touchmove", e => {
-  const touch = e.touches[0];
-  mouseX = touch.clientX;
-  mouseY = touch.clientY;
-});
-
-// animation variables
-let time = 0;
-
-function animate() {
-  ctx.clearRect(0, 0, width, height);
-
-  // internal motion (like flowing colors)
-  time += 0.02;
-
-  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 300);
-
-  gradient.addColorStop(0, `hsla(${(time * 40) % 360}, 100%, 60%, 1)`);
-  gradient.addColorStop(0.5, `hsla(${(time * 40 + 120) % 360}, 100%, 50%, 0.7)`);
-  gradient.addColorStop(1, "rgba(0,0,0,0)");
-
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-</script>
- 
+<canvas id="bgCanvas"></canvas>
+  
   <div class="content-wrapper">
     
     <!-- Navigation -->
@@ -317,6 +242,55 @@ animate();
   window.addEventListener('load', revealOnScroll);
   
   
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+
+  window.addEventListener("resize", () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+});
+
+let mouseX = width / 2;
+let mouseY = height / 2;
+let hue = 200; // starting color
+
+// Track mouse
+document.addEventListener("mousemove", e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Track finger (touch)
+document.addEventListener("touchmove", e => {
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+});
+
+// Animate glowing blob
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  // smooth color cycling
+  hue = (hue + 1) % 360;
+
+  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 250);
+  gradient.addColorStop(0, `hsla(${hue}, 100%, 70%, 1)`);
+  gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 
     
