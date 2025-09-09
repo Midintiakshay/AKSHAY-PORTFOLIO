@@ -10,8 +10,8 @@
 </head>
 <body>
 
-<canvas id="bgCanvas"></canvas>
-  
+<canvas id="glbg"></canvas>
+
   <div class="content-wrapper">
     
     <!-- Navigation -->
@@ -240,59 +240,190 @@
 
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
+
   
-  
-  const canvas = document.getElementById("bgCanvas");
-  const ctx = canvas.getContext("2d");
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
 
-  window.addEventListener("resize", () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-});
+(() => {
+  const canvas = document.getElementById('glbg');
+  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, premultipliedAlpha: false });
+  if (!gl) { console.warn('WebGL not supported'); return; }
 
-let mouseX = width / 2;
-let mouseY = height / 2;
-let hue = 200; // starting color
+  // Handle sizing with devicePixelRatio for crisp output
+  const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  function resize() {
+    const w = Math.floor(canvas.clientWidth * dpr);
+    const h = Math.floor(canvas.clientHeight * dpr);
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w; canvas.height = h;
+      gl.viewport(0, 0, w, h);
+    }
+  }
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas);
 
-// Track mouse
-document.addEventListener("mousemove", e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+  // Fullscreen triangle (fastest)
+  const vertSrc = `
+    attribute vec2 a_pos;
+    void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }
+  `;
 
-// Track finger (touch)
-document.addEventListener("touchmove", e => {
-  const touch = e.touches[0];
-  mouseX = touch.clientX;
-  mouseY = touch.clientY;
-});
+  // Fragment shader: neon liquid + pointer-reactive field
+  const fragSrc = `
+    precision highp float;
+    uniform vec2 u_res;         // pixel resolution
+    uniform vec2 u_pointer;     // normalized pointer (0..1), (-1,-1) if inactive
+    uniform float u_time;
 
-// Animate glowing blob
-function animate() {
-  ctx.clearRect(0, 0, width, height);
+    // Hash & value noise (fast)
+    float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }
+    float noise(vec2 p){
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      float a = hash(i);
+      float b = hash(i + vec2(1.0, 0.0));
+      float c = hash(i + vec2(0.0, 1.0));
+      float d = hash(i + vec2(1.0, 1.0));
+      vec2 u = f * f * (3.0 - 2.0 * f);
+      return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+    }
+    float fbm(vec2 p){
+      float v = 0.0;
+      float a = 0.5;
+      for (int i = 0; i < 5; i++) {
+        v += a * noise(p);
+        p = p * 2.1 + 31.416; // warp and scale
+        a *= 0.5;
+      }
+      return v;
+    }
 
-  // smooth color cycling
-  hue = (hue + 1) % 360;
+    // HSV->RGB for smooth neon hues
+    vec3 hsv2rgb(vec3 c){
+      vec3 p = abs(fract(c.xxx + vec3(0., 2./3., 1./3.)) * 6. - 3.);
+      vec3 rgb = c.z * mix(vec3(1.), clamp(p - 1., 0., 1.), c.y);
+      return rgb;
+    }
 
-  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 250);
-  gradient.addColorStop(0, `hsla(${hue}, 100%, 70%, 1)`);
-  gradient.addColorStop(1, "rgba(0,0,0,0)");
+    void main(){
+      vec2 frag = gl_FragCoord.xy;
+      vec2 res = u_res;
+      vec2 uv = (frag / res) * 2.0 - 1.0;
+      uv.x *= res.x / res.y; // aspect-correct
 
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
+      // Base moving field (liquid/plasma)
+      float t = u_time * 0.35;
+      vec2 flowUV = uv;
+      flowUV += 0.25 * vec2(fbm(uv * 1.2 + t), fbm(uv * 1.2 - t));
+      float field = fbm(flowUV * 2.0 + t * 0.8);
 
-  requestAnimationFrame(animate);
-}
+      // Pointer influence: attract/repel the field near the pointer
+      float pointerBoost = 0.0;
+      if (u_pointer.x >= 0.0) {
+        vec2 p = (u_pointer * 2.0 - 1.0);
+        p.x *= res.x / res.y;
+        float dist = length(uv - p);                     // distance in NDC
+        float pulse = exp(-8.0 * dist * dist);           // tight falloff
+        pointerBoost = pulse * (0.6 + 0.4 * sin(t * 3.0));
+        // Distort field near pointer for swirly reaction
+        field += pointerBoost * fbm((uv - p) * 6.0 + t * 2.0);
+      }
 
-animate();
+      // Neon color palette (futuristic dark: violet/magenta/cyan)
+      float hue = fract(field * 0.65 + t * 0.07); // slow hue drift
+      float sat = 0.95;
+      float val = 0.0;
+
+      // Base darkness + subtle motion across screen
+      float baseGlow = smoothstep(0.45, 0.75, field) * 0.12;
+
+      // Stronger where the pointer is
+      float pointerGlow = pointerBoost * 0.85;
+
+      val = baseGlow + pointerGlow;
+
+      // Clamp + gamma-ish
+      val = clamp(val, 0.0, 1.0);
+      vec3 col = hsv2rgb(vec3(hue, sat, pow(val, 0.85)));
+
+      // Composite on pure black
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  function compile(type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      console.error(gl.getShaderInfoLog(sh));
+      gl.deleteShader(sh);
+      return null;
+    }
+    return sh;
+  }
+
+  const vs = compile(gl.VERTEX_SHADER, vertSrc);
+  const fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error(gl.getProgramInfoLog(prog));
+    return;
+  }
+  gl.useProgram(prog);
+
+  // Fullscreen big triangle
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+    -1, -1,   3, -1,   -1, 3
+  ]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'a_pos');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  // Uniforms
+  const uRes = gl.getUniformLocation(prog, 'u_res');
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uPointer = gl.getUniformLocation(prog, 'u_pointer');
+
+  let pointer = [-1, -1]; // -1 means "inactive"
+  function setPointer(clientX, clientY) {
+    const rect = canvas.getBoundingClientRect();
+    const x = (clientX - rect.left) / rect.width;
+    const y = 1.0 - (clientY - rect.top) / rect.height;
+    pointer = [x, y];
+  }
+
+  // Pointer events
+  window.addEventListener('mousemove', (e) => setPointer(e.clientX, e.clientY));
+  window.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    setPointer(t.clientX, t.clientY);
+  }, {passive: true});
+  window.addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    setPointer(t.clientX, t.clientY);
+  }, {passive: true});
+  window.addEventListener('touchend', () => { pointer = [-1, -1]; });
+
+  // Animation loop
+  let start = performance.now();
+  function frame(now) {
+    resize();
+    const t = (now - start) / 1000;
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, t);
+    gl.uniform2f(uPointer, pointer[0], pointer[1]);
+
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
 </script>
-
     
   
   
