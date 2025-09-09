@@ -240,6 +240,8 @@
 
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
+
+
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -257,33 +259,30 @@ window.addEventListener("resize", () => {
 
 let mouseX = width / 2;
 let mouseY = height / 2;
+let hue = 200; // starting color
 
-// track mouse
+// Track mouse
 document.addEventListener("mousemove", e => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
-// track touch
+// Track finger (touch)
 document.addEventListener("touchmove", e => {
   const touch = e.touches[0];
   mouseX = touch.clientX;
   mouseY = touch.clientY;
 });
 
-// animation variables
-let time = 0;
-
+// Animate glowing blob
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
-  // internal motion (like flowing colors)
-  time += 0.02;
+  // smooth color cycling
+  hue = (hue + 1) % 360;
 
-  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 300);
-
-  gradient.addColorStop(0, `hsla(${(time * 40) % 360}, 100%, 60%, 1)`);
-  gradient.addColorStop(0.5, `hsla(${(time * 40 + 120) % 360}, 100%, 50%, 0.7)`);
+  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 250);
+  gradient.addColorStop(0, `hsla(${hue}, 100%, 70%, 1)`);
   gradient.addColorStop(1, "rgba(0,0,0,0)");
 
   ctx.fillStyle = gradient;
@@ -293,16 +292,7 @@ function animate() {
 }
 
 animate();
-
-  
 </script>
-
-    
-  
-  
-  
-  
-  
  
   <!-- Navigation -->
   <nav class="navbar">
