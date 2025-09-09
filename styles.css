@@ -1,23 +1,14 @@
 /* Reset and Base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body {
-  font-family: 'Inter', sans-serif;
-  color: #eee;
-  position: relative;
-  z-index: 0;
-  background: black;
-  overflow-x: hidden;
+* { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
-
-/* Background Canvas */
-#bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background:#829fcf;
+  color: #eee;
 }
 
 /* Navbar */
@@ -25,16 +16,18 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(24, 24, 24, 0.9);
+  background: #181818;
   padding: 0.7rem 1rem;
   z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 .navbar a {
   color: #bb86fc;
@@ -46,21 +39,21 @@ body {
 .hero {
   text-align: center;
   padding: 7rem 1rem 3rem;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
 }
-.hero.visible { opacity: 1; transform: translateY(0); }
 .profile-photo {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   border: 4px solid #4d4d4d;
 }
-.name { font-size: 2.4rem; color: #fff; margin-top: 1rem; }
-.title { opacity: 0.85; }
-
-/* Resume Button */
+.name {
+  font-size: 2.4rem;
+  color:#829fcf;
+  margin-top: 1rem;
+}
+.title {
+  opacity: 0.85;
+}
 .resume-button {
   margin-top: 1.5rem;
   background: linear-gradient(45deg, #03dac5, #bb86fc);
@@ -71,7 +64,7 @@ body {
   text-decoration: none;
 }
 
-/* Sections */
+/* Section Styling */
 .section {
   padding: 3rem 1rem;
   max-width: 960px;
@@ -80,7 +73,7 @@ body {
 
 /* Cards */
 .edu-card, .project {
-  background: rgba(30,30,30,0.9);
+  background: #1e1e1e;
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
@@ -92,29 +85,39 @@ body {
 /* Skills */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
 }
 .skill {
-  background: rgba(51,51,51,0.9);
+  background: #333;
   padding: 1rem;
   border-radius: 10px;
   text-align: center;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: transform 0.8s ease, opacity 0.8s ease;
+  transition: 0.3s transform;
 }
-.skill.visible { transform: translateY(0); opacity: 1; }
-.skill img, .skill i { width: 32px; height: 32px; margin-bottom: 0.5rem; }
+.skill:hover { transform: scale(1.05); }
+.skill img, .skill i {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.5rem;
+}
+.blue { background: #1e88e5; }
+.purple { background: #8e24aa; }
+.teal { background: #00acc1; }
+.amber { background: #ffb300; }
 
 /* Footer */
 footer {
-  background-color: rgba(24,24,24,0.9);
+  background-color: #181818;
   color: #eee;
   text-align: center;
   padding: 2rem 1rem;
 }
-.social a { color: #03dac5; margin: 0 0.5rem; text-decoration: none; }
+.social a {
+  color: #03dac5;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
 
 /* Buttons */
 .link-button {
@@ -141,18 +144,54 @@ footer {
 .slide-right         { transform: translateX(50px); }
 .slide-right.visible { opacity: 1; transform: none; }
 .bounce.visible      { animation: bounce-in 0.8s ease forwards; }
+
 @keyframes bounce-in {
-  0% { opacity: 0; transform: scale(0.9); }
-  50% { transform: scale(1.05); }
+  0%   { opacity: 0; transform: scale(0.9); }
+  50%  { transform: scale(1.05); }
   100% { opacity: 1; transform: scale(1); }
 }
-#bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: black;
+/* Global Link Styling */
+a {
+  color: #00ffff; /* Cyan */
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #00bfff; /* Deep Sky Blue */
 }
 
+/* Animate Skills on Scroll */
+.skill {
+  background: #333;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+.skill.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero {
+  text-align: center;
+  padding: 7rem 1rem 3rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    #trailBg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: black;
+    display: block;
+  }
