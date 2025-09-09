@@ -11,7 +11,7 @@
 <body>
 
 <canvas id="bgCanvas"></canvas>
-
+  
   <div class="content-wrapper">
     
     <!-- Navigation -->
@@ -240,69 +240,52 @@
 
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
-
-
-
-
-
-const canvas = document.getElementById("bgCanvas");
-const ctx = canvas.getContext("2d");
-
-let width = window.innerWidth;
-let height = window.innerHeight;
-canvas.width = width;
-canvas.height = height;
-
-window.addEventListener("resize", () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
+  
+  
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let width = window.innerWidth;
+  let height = window.innerHeight;
   canvas.width = width;
   canvas.height = height;
+
+  window.addEventListener("resize", () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
 });
 
-// Track finger / mouse
 let mouseX = width / 2;
 let mouseY = height / 2;
+let hue = 200; // starting color
 
+// Track mouse
 document.addEventListener("mousemove", e => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
+// Track finger (touch)
 document.addEventListener("touchmove", e => {
   const touch = e.touches[0];
   mouseX = touch.clientX;
   mouseY = touch.clientY;
 });
 
-// Trail storage
-let trails = [];
-let time = 0;
-
+// Animate glowing blob
 function animate() {
-  time += 0.02;
+  ctx.clearRect(0, 0, width, height);
 
-  // Slight fade to black each frame (keeps trails smooth)
-  ctx.fillStyle = "rgba(0,0,0,0.1)";
+  // smooth color cycling
+  hue = (hue + 1) % 360;
+
+  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 250);
+  gradient.addColorStop(0, `hsla(${hue}, 100%, 70%, 1)`);
+  gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+  ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, width, height);
-
-  // Add new point to trail
-  trails.push({ x: mouseX, y: mouseY, t: time });
-
-  // Keep only recent trail
-  if (trails.length > 100) trails.shift();
-
-  // Draw trails with shifting colors
-  trails.forEach((p, i) => {
-    const age = (time - p.t) * 40; 
-    const alpha = Math.max(1 - age / 200, 0); 
-
-    const hue = (p.t * 120 + i * 3) % 360;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 30, 0, Math.PI * 2);
-    ctx.fillStyle = `hsla(${hue}, 100%, 60%, ${alpha})`;
-    ctx.fill();
-  });
 
   requestAnimationFrame(animate);
 }
@@ -310,7 +293,12 @@ function animate() {
 animate();
 </script>
 
-
+    
+  
+  
+  
+  
+  
  
   <!-- Navigation -->
   <nav class="navbar">
