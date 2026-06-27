@@ -197,143 +197,71 @@
 
 /* CONTACT */
 
-.contact{
-    padding:80px 20px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:2.5rem;
-    color:#00d4ff;
-}
-
-.contact-subtitle{
-    text-align:center;
-    color:#bbb;
-    margin:15px 0 40px;
-}
-
-.contact-window{
-    max-width:1100px;
-    margin:auto;
-    background:#111;
-    border:1px solid #222;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 0 25px rgba(0,212,255,.15);
-}
-
-.window-header{
-    height:50px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:0 20px;
-    border-bottom:1px solid #222;
-}
-
-.dot{
-    width:14px;
-    height:14px;
-    border-radius:50%;
-}
-
-.red{background:#ff5f56;}
-.yellow{background:#ffbd2e;}
-.green{background:#27c93f;}
-
 .contact-content{
-    display:grid;
-    grid-template-columns:1fr 1.4fr;
-    gap:40px;
-    padding:40px;
-}
-
-.contact-info h3{
-    color:#fff;
-    margin-bottom:30px;
-}
-
-.info-box{
     display:flex;
-    gap:15px;
-    margin-bottom:30px;
-}
-
-.info-box span{
-    font-size:28px;
-}
-
-.info-box h4{
-    color:#00d4ff;
-    margin-bottom:5px;
-}
-
-.info-box p,
-.info-box a{
-    color:#ccc;
-    text-decoration:none;
+    justify-content:center;
+    padding:45px;
 }
 
 .contact-form{
+    width:100%;
+    max-width:700px;
     display:flex;
     flex-direction:column;
     gap:18px;
 }
 
-.contact-form input,
-.contact-form textarea{
-    padding:15px;
-    border-radius:10px;
-    border:1px solid #333;
-    background:#181818;
-    color:#fff;
-    font-size:16px;
-}
 
-.contact-form input:focus,
-.contact-form textarea:focus{
-    outline:none;
-    border-color:#00d4ff;
-}
-
-.contact-form button{
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    background:#00d4ff;
-    color:#000;
-    font-size:17px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.contact-form button:hover{
-    background:#00b7dd;
-}
 
 /* FOOTER */
 
 .footer{
     margin-top:80px;
-    padding:35px 20px;
+    padding:50px 20px;
     background:#0b0b0b;
     text-align:center;
+}
+
+.footer h3{
+    color:#00d4ff;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.footer-desc{
+    color:#bbb;
+    margin-bottom:25px;
+}
+
+.footer-contact{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-bottom:30px;
+    color:#ddd;
+}
+
+.footer-contact a{
+    color:#ddd;
+    text-decoration:none;
+}
+
+.footer-contact a:hover{
+    color:#00d4ff;
 }
 
 .footer-social{
     display:flex;
     justify-content:center;
     gap:30px;
-    margin-bottom:20px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
 }
 
 .footer-social a{
-    color:#ffffff;
+    color:#fff;
     text-decoration:none;
-    font-size:20px;
-    font-weight:600;
     transition:.3s;
 }
 
@@ -352,21 +280,20 @@
     color:#999;
 }
 
-/* Responsive */
-
 @media(max-width:768px){
 
-.contact-content{
-    grid-template-columns:1fr;
-}
-
-.section-title{
-    font-size:2rem;
+.footer-contact{
+    flex-direction:column;
+    gap:15px;
 }
 
 .footer-social{
     flex-direction:column;
     gap:15px;
+}
+
+.contact-content{
+    padding:25px 18px;
 }
 
 }
@@ -626,78 +553,47 @@
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
-<section id="contact" class="contact section">
-    <h2 class="section-title">Contact Me</h2>
-    <p class="contact-subtitle">
-        Have a project in mind? Feel free to send me a message.
-    </p>
+    
+<!-- Contact Section -->
+<div class="contact-content">
 
-    <div class="contact-window">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
 
-        <div class="window-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+        <input type="hidden" name="access_key" value="f2df3bae-6be4-4c2c-8142-4beab1f3a3b9">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+</div>
+
+    <!-- Footer -->
+  <footer class="footer">
+
+    
+    <div class="footer-contact">
+
+        <div>
+            📍 Thogarpally, Sangareddy, Telangana, India
         </div>
 
-        <div class="contact-content">
+        <div>
+            📞 <a href="tel:+918919883303">+91 89198 83303</a>
+        </div>
 
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-
-                <div class="info-box">
-                    <span>📍</span>
-                    <div>
-                        <h4>Address</h4>
-                        <p>Thogarpally, Sangareddy,<br>Telangana, India</p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <span>📞</span>
-                    <div>
-                        <h4>Phone</h4>
-                        <p><a href="tel:+918919883303">+91 89198 83303</a></p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <span>✉️</span>
-                    <div>
-                        <h4>Email</h4>
-                        <p>
-                            <a href="mailto:akshaykumarmidinti@gmail.com">
-                                akshaykumarmidinti@gmail.com
-                            </a>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-
-                <input type="hidden" name="access_key" value="f2df3bae-6be4-4c2c-8142-4beab1f3a3b9">
-
-                <input type="text" name="name" placeholder="Your Name" required>
-
-                <input type="email" name="email" placeholder="Your Email" required>
-
-                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-
-                <button type="submit">Send Message</button>
-
-            </form>
-
+        <div>
+            ✉️ <a href="mailto:akshaykumarmidinti@gmail.com">
+                akshaykumarmidinti@gmail.com
+            </a>
         </div>
 
     </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
 
     <div class="footer-social">
 
@@ -716,8 +612,6 @@
     <p>© 2026 Akshay Kumar. All Rights Reserved.</p>
 
 </footer>
-
-  </div> <!-- end content-wrapper -->
 
   <!-- Scroll Animations with Staggered Delay (keeps your reveal logic) -->
   <script>
