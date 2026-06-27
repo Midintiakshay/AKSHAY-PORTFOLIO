@@ -197,20 +197,116 @@
 
 /* CONTACT */
 
-.contact-content{
+.contact{
+    padding:100px 20px;
+}
+
+.contact-window{
+    max-width:750px;
+    margin:40px auto 0;
+    background:#111;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.window-top{
+    height:48px;
+    background:#1b1b1b;
     display:flex;
-    justify-content:center;
-    padding:45px;
+    align-items:center;
+    padding:0 18px;
+    position:relative;
+}
+
+.red,.yellow,.green{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    margin-right:8px;
+}
+
+.red{background:#ff5f56;}
+.yellow{background:#ffbd2e;}
+.green{background:#27c93f;}
+
+.window-title{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    color:#bbb;
+    font-size:14px;
 }
 
 .contact-form{
-    width:100%;
-    max-width:700px;
+    padding:35px;
     display:flex;
     flex-direction:column;
     gap:18px;
 }
 
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #333;
+    background:#1a1a1a;
+    color:#fff;
+    font-size:16px;
+    transition:.3s;
+    box-sizing:border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    border-color:#00d4ff;
+    outline:none;
+}
+
+.contact-form textarea{
+    resize:none;
+}
+
+.contact-form button{
+    background:#00d4ff;
+    color:#000;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.contact-form button:hover{
+    background:#00b8de;
+    transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+
+.contact{
+    padding:70px 15px;
+}
+
+.contact-form{
+    padding:20px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button{
+    font-size:15px;
+}
+
+.window-title{
+    font-size:13px;
+}
+
+}
 
 
 /* FOOTER */
@@ -554,24 +650,42 @@
     </section>
 
     
-<!-- Contact Section -->
-<div class="contact-content">
+<section id="contact" class="contact section">
 
-    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+    <h2 class="section-title">Contact Me</h2>
 
-        <input type="hidden" name="access_key" value="f2df3bae-6be4-4c2c-8142-4beab1f3a3b9">
+    <p class="section-subtitle">
+        Let's build something amazing together.
+    </p>
 
-        <input type="text" name="name" placeholder="Your Name" required>
+    <div class="contact-window">
 
-        <input type="email" name="email" placeholder="Your Email" required>
+        <div class="window-top">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+            <div class="window-title">contact.js</div>
+        </div>
 
-        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
 
-        <button type="submit">Send Message</button>
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
 
-    </form>
+            <input type="text" name="name" placeholder="Your Name" required>
 
-</div>
+            <input type="email" name="email" placeholder="Your Email" required>
+
+            <input type="text" name="subject" placeholder="Subject">
+
+            <textarea name="message" rows="6" placeholder="Write your message..." required></textarea>
+
+            <button type="submit">Send Message →</button>
+
+        </form>
+
+    </div>
+
+</section>
 
     <!-- Footer -->
   <footer class="footer">
