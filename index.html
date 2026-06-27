@@ -191,6 +191,39 @@
       .profile-photo { width: 140px; height: 140px; }
       .name { font-size: 1.6rem; }
     }
+
+    .contact-form {
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #00ffff;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #00ffff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+}
+    
   </style>
 </head>
 <body>
@@ -447,16 +480,38 @@
     </section>
 
     <!-- Contact -->
-    <footer class="section" id="contact">
-      <h2>Contact</h2>
-      <p>📍 <a href="https://www.google.com/maps/search/Thogarpally,+Sangareddy,+Telangana" target="_blank">Thogarpally, Sangareddy, Telangana</a></p>
-      <p>📧 <a href="mailto:akshaykumarmidinti@gmail.com">akshaykumarmidinti@gmail.com</a></p>
-      <p>📞 <a href="tel:+918919883303">+91 89198 83303</a></p>
-      <div class="social">
-        <a href="https://github.com/Midintiakshay" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-        <a href="https://www.linkedin.com/in/midinti-akshay-kumar-1363502bb" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </div>
-    </footer>
+<footer class="section" id="contact">
+  <h2>Contact</h2>
+
+  <p>📍 <a href="https://www.google.com/maps/search/Thogarpally,+Sangareddy,+Telangana" target="_blank">
+    Thogarpally, Sangareddy, Telangana
+  </a></p>
+
+  <p>📧 <a href="mailto:akshaykumarmidinti@gmail.com">
+    akshaykumarmidinti@gmail.com
+  </a></p>
+
+  <p>📞 <a href="tel:+918919883303">
+    +91 89198 83303
+  </a></p>
+
+  <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+    <input type="hidden" name="access_key" value="f2df3bae-6be4-4c2c-8142-4beab1f3a3b9">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <input type="email" name="email" placeholder="Your Email" required>
+
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="social">
+    <a href="https://github.com/Midintiakshay" target="_blank">GitHub</a> |
+    <a href="https://www.linkedin.com/in/midinti-akshay-kumar" target="_blank">LinkedIn</a>
+  </div>
+</footer>
 
   </div> <!-- end content-wrapper -->
 
